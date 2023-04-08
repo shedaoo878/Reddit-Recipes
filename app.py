@@ -43,7 +43,8 @@ def convert_markdown_to_plain_text(text):
 
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
+
 def index():
     posts = []
 
