@@ -1,13 +1,22 @@
 from flask import Flask, render_template
 import praw
+import os
 import markdown
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-reddit = praw.Reddit(client_id="RvKIuTpV9eEvAehe1ul97g",
-                     client_secret="vdr2y6P2SzzpnA4ZXODCO-eSX9dQ0Q",
-                     user_agent="my user agent")
+client_id = os.environ.get('REDDIT_CLIENT_ID')
+client_secret = os.environ.get('REDDIT_CLIENT_SECRET')
+user_agent = os.environ.get('REDDIT_USER_AGENT')
+
+reddit = praw.Reddit(client_id=client_id,
+                     client_secret=client_secret,
+                     user_agent=user_agent)
+
 
 # list of topics
 
